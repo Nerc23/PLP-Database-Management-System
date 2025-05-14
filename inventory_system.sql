@@ -38,7 +38,7 @@ CREATE TABLE Inventory (
     LocationID INT NOT NULL,
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
     FOREIGN KEY (LocationID) REFERENCES Locations(LocationID),
-    UNIQUE KEY (ProductID, LocationID) -- Ensure unique product per location
+    UNIQUE KEY (ProductID, LocationID) 
 );
 
 -- Table: Locations
@@ -57,7 +57,7 @@ CREATE TABLE PurchaseOrders (
     FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
 );
 
--- Table: OrderItems (Details of products in each purchase order)
+-- Table: OrderItems 
 CREATE TABLE OrderItems (
     OrderItemID INT PRIMARY KEY AUTO_INCREMENT,
     OrderID INT NOT NULL,
@@ -72,12 +72,11 @@ CREATE TABLE OrderItems (
 CREATE TABLE SalesOrders (
     OrderID INT PRIMARY KEY AUTO_INCREMENT,
     OrderDate DATE NOT NULL,
-    CustomerID INT, -- Optional: if you want to track customers
+    CustomerID INT, -- track customers
     OrderStatus VARCHAR(50) DEFAULT 'Pending' -- e.g., Pending, Processing, Shipped, Delivered
-    -- Add other relevant customer or sales details if needed
 );
 
--- Table: SalesOrderItems (Details of products in each sales order)
+-- Table: SalesOrderItems 
 CREATE TABLE SalesOrderItems (
     SalesOrderItemID INT PRIMARY KEY AUTO_INCREMENT,
     OrderID INT NOT NULL,
